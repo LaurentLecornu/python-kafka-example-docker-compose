@@ -52,24 +52,6 @@ cmd .
     └── requirements.txt
 ```
 
-## Environment Variables
-Listed below are the environment variables needed to run the application. They can be included in docker-compose or to run locally, it's necessary to create an `.env` file in the root of the Publisher and Consumer service folders.
-
-- Publisher:
-
-```bash
-KAFKA_TOPIC_NAME=
-KAFKA_SERVER=
-KAFKA_PORT=
-```
-
-- Consumer:
- 
-```bash
-KAFKA_TOPIC_NAME=
-KAFKA_SERVER=
-KAFKA_PORT=
-```
 
 
 ## Help and Resources
