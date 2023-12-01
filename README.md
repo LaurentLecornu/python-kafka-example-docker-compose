@@ -16,7 +16,7 @@ You will need Docker installed to follow the next steps. To create and run the i
 > docker-compose up --build &
 ```
 
-The configuration will create a cluster with 3 containers:
+The configuration will create a cluster with 5 containers:
 
 - Consumer container
 - Publisher container
