@@ -81,7 +81,7 @@ Below is a project structure created:
 ```
 cmd .
 ├── README.md
-├── docker-compose.yml
+├── architecture_lambda.pdf
 ├── kafka
 │   ├── docker-compose.yml
 ├── consumer
