@@ -24,6 +24,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY ./app ./app
 
 # Run the application
-CMD ["python", "app/generate-random-events.py","spark-demo-events"]
+CMD ["python", "app/producer.py","velib-stations"]
 
 # CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -21,11 +21,11 @@ WORKDIR /consumer
 
 # Install dependencies
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip --no-cache-dir && pip install --no-cache-dir -r requirements.txt
 # RUN pip install --no-cache-dir --user -r /req.txt
 
 # Copy source code
 COPY ./app ./app
 
 # Run the application
-CMD ["python", "app/main.py"]
+CMD ["python", "app/consumer.py"]

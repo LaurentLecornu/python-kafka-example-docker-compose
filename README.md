@@ -1,5 +1,18 @@
-# python-kafka-docker
-The main objective in this project was to learn how to create an application that sends and receives a message from Kafka, using Docker and docker-compose tools.
+# Lab 2 : Kafka
+
+## Architecture Lambda
+
+## Step 1 : Kafka
+
+
+The steps :
+
+1. Build and start the docker image
+2. Open terminals and run the test
+
+We will create a stream, send it to Kafka and consume it from kafka.
+![Markdown preferences pane](architecture_big_data.pdf)
+
 
 ## Stack
 
@@ -9,20 +22,51 @@ The main objective in this project was to learn how to create an application tha
 
 ## How to use
 
-### Using Docker Compose 
-You will need Docker installed to follow the next steps. To create and run the image use the following command:
-
-```bash
-> docker-compose up --build &
-```
+### Using Docker Compose
 
 The configuration will create a cluster with 5 containers:
 
-- Consumer container
-- Publisher container
 - kafka container
 - kafdrop container
 - zookeeper container
+- Consumer container
+- Publisher container
+
+in 3 docker-compose.
+
+- The first 3 containers for Kafka (kafka services)
+- The producer (with topic creation)
+- The consumer (read the kafka server)
+
+We launch in three terminals.
+
+You will need Docker installed to follow the next steps. To create and run the image use the following command:
+
+if your are in the directory *kafka*
+
+```bash
+docker-compose up --build &
+```
+
+wait few minuites (until the end of kafka services starting )
+
+In an other terminal :
+if your are in the directory *producer*
+
+```bash
+docker-compose up --build &
+```
+
+In an other terminal :
+if your are in the directory *consumer*
+
+```bash
+docker-compose up --build &
+```
+or 
+```
+docker-compose -f consumer/docker-compose.yml up -d
+```
 
 The Publisher container sends data to Kafka.
 
@@ -38,17 +82,21 @@ Below is a project structure created:
 cmd .
 ├── README.md
 ├── docker-compose.yml
+├── kafka
+│   ├── docker-compose.yml
 ├── consumer
+│   ├── docker-compose.yml
 │   ├── Dockerfile
 │   ├── app
 │   │   ├── __init__.py
-│   │   └── main.py
+│   │   └── consumer.py
 │   └── requirements.txt
 └── producer
+│   ├── docker-compose.yml
     ├── Dockerfile
     ├── app
     │   ├── __init__.py
-    │   ├── generate-random-events.py
+    │   ├── producer.py
     └── requirements.txt
 ```
 
