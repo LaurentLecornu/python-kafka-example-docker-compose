@@ -1,16 +1,17 @@
-version: "3"
-
 services:
   producer:
     build: .
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     container_name: producer
-    ports:
-      - '8000:8000'
-    restart: "always"
+    command: /bin/bash
     networks:
-      - mynetwork
+      - network1
+    volumes:
+      - ./app:/producer/app
 
 networks:
-  mynetwork:
-    external: true
+  network1:
+    name: mynetwork
+    driver: bridge
 
