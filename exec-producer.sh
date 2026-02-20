@@ -1,0 +1,1 @@
+docker exec producer python producer_generate-random-events
