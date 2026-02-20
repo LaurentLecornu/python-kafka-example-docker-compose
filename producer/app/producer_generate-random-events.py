@@ -35,7 +35,7 @@ def generate_random_event():
 def produce_to_kafka(data, topic):
     value_serializer=lambda x: json.dumps(x).encode('utf-8')
     producer = KafkaProducer(
-        bootstrap_servers=["kafka:29092"], 
+        bootstrap_servers=["broker-1:29092"], 
         value_serializer=lambda x: json.dumps(x).encode('utf-8')
     )
     producer.send(topic, data)
@@ -44,7 +44,7 @@ def produce_to_kafka(data, topic):
 def main():
     topic = "kafka-demo-events"
 
-    kafka_client = KafkaClient(bootstrap_servers='kafka:29092')
+    kafka_client = KafkaClient(bootstrap_servers='broker-1:29092')
 
     clusterMetadata = kafka_client.cluster
     server_topics = clusterMetadata.topics()
@@ -52,7 +52,7 @@ def main():
     if topic not in server_topics:
         try:
             print("create new topic :", topic)
-            admin = KafkaAdminClient(bootstrap_servers='kafka:29092')
+            admin = KafkaAdminClient(bootstrap_servers='broker-1:29092')
 
             topic1 = NewTopic(name=topic,
                              num_partitions=1,
@@ -61,7 +61,7 @@ def main():
         except Exception:
             pass
 
-    producer = KafkaProducer(bootstrap_servers="kafka:29092")
+    producer = KafkaProducer(bootstrap_servers="broker-1:29092")
 
     while True:
         data = generate_random_event()
