@@ -1,4 +1,0 @@
-confluent-kafka
-kafka-python-ng
-Jupyter
-notebook
