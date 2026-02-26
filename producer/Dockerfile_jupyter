@@ -22,19 +22,14 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /producer/app
 
 # Install dependencies
-COPY requirements.txt .
+COPY requirements_jupyter.txt .
 RUN pip install --no-cache-dir pip --upgrade && \
-    pip install --no-cache-dir -r requirements.txt
-#RUN pip install --no-cache-dir confluent-kafka
-#RUN pip install --no-cache-dir kafka-python-ng
-#RUN pip install --no-cache-dir jupyter
-#RUN pip install --no-cache-dir notebook
-#RUN pip install --no-cache-dir pyspark
+    pip install --no-cache-dir -r requirements_jupyter.txt
 
 # Copy source code
 COPY ./app .
 
-EXPOSE 8000
+EXPOSE 8000 8888
 
 # Run the application
 CMD ["bash"]
