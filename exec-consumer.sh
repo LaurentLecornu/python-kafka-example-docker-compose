@@ -1,0 +1,1 @@
+docker exec consumer python consumer.py

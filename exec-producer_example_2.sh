@@ -1,0 +1,1 @@
+docker exec producer python generate-random-event_1_capteur.py
