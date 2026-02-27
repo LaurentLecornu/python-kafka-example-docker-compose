@@ -1,0 +1,23 @@
+services:
+  producer:
+    build: 
+      context: .
+      dockerfile: Dockerfile_jupyter
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    container_name: producer_jupyter
+    networks:
+      - network1
+    ports:
+      - "8888:8888" 
+    volumes:
+      - ./app:/producer/app
+    working_dir: /producer/app
+    entrypoint: /bin/bash
+    command: -c "./jupyter_start.sh && tail -f /dev/null"
+
+networks:
+  network1:
+    name: mynetwork
+    driver: bridge
+
