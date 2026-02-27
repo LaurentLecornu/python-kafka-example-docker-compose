@@ -1,14 +1,17 @@
-version: "3"
-
 services:
   consumer:
     build: .
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     container_name: consumer
-    restart: "always"
     networks:
-      - mynetwork
+      - network1
+    volumes:
+      - ./app:/consumer/app
 
 networks:
-  mynetwork:
-    external: true
+  network1:
+    name: mynetwork
+    driver: bridge
+
 
